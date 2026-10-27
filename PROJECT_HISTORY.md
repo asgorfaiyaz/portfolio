@@ -113,7 +113,28 @@ The portfolio follows an intentional, minimalist, dark-mode-first aesthetic tail
   - Centered in the 5-column right grid with responsive sizing (`max-w-sm sm:max-w-md`).
   - Next.js `<Image>` with `priority` for optimal LCP.
 
-### F. Single Page Application Shell (`app/page.tsx`)
+### F. About Section (`components/about/about.tsx`)
+- Section anchor: `#about`.
+- Personal and technical narrative:
+  - 10+ full-stack projects experience across PERN and MERN stacks with TypeScript.
+  - Focus on clean architecture, type safety, and real-world web application scalability.
+- Bento highlight cards:
+  - `AI-Assisted Engineering`: Accelerating shipping cycles with modern AI workflows.
+  - `Open to Opportunities`: Actively seeking Full Stack or Frontend roles.
+
+### G. Skills & Architecture Section (`components/skills/skills.tsx`)
+- Section anchor: `#skills`.
+- 4-Domain Architectural Grid:
+  - **01. Frontend & UI Engineering**: Next.js 16 (App Router), React, TypeScript, Tailwind CSS, shadcn/ui, TanStack Query, Zustand, Redux / RTK Query.
+  - **02. Backend & Server Architecture**: Node.js, Express.js, Drizzle ORM, Stripe Payments, RESTful APIs, Server Actions.
+  - **03. Databases & Data Modeling**: PostgreSQL, MongoDB, Drizzle ORM, Relational Schema Design, CRUD Architectures.
+  - **04. Authentication & Dev Tooling**: Better Auth, Clerk, Git & GitHub, AI-Assisted Development, Turbopack, ESLint / TypeScript 5.
+- Core Architectural Focus Strip:
+  - Dual stack versatility (PERN & MERN).
+  - End-to-end type safety (Drizzle schema to React components).
+  - Production integrations (Stripe, Better Auth, Clerk, TanStack caching).
+
+### H. Single Page Application Shell (`app/page.tsx`)
 - Structured single-page layout with anchor sections:
   - `#home`: Hero section with quick action buttons.
   - `#about`: Background & philosophy placeholder.
