@@ -101,7 +101,19 @@ The portfolio follows an intentional, minimalist, dark-mode-first aesthetic tail
   - View Resume button (`/resume.pdf`, new tab) and Get in touch action.
 - **`navbar.tsx`**: Sticky top navigation container with backdrop blur, active section detection, and primary "Resume" CTA.
 
-### E. Single Page Application Shell (`app/page.tsx`)
+### E. Banner / Hero Component (`components/banner/banner.tsx`)
+- High-impact two-column layout (`12-column grid` on desktop, stacked on mobile).
+- Tailored developer copy:
+  - Heading: `"Hi, I'm Faiyaz."` with sub-heading `"In love with Next.js & TypeScript."`.
+  - Narrative: Highlighting `"10+ completed projects"`, `"PERN"`, and `"MERN"` with technical micro-badges.
+  - CTAs: `"Explore Projects"` (smooth scroll to `#projects`) and `"Get in touch"` (to `#contact`).
+  - Core Focus row: Next.js 16, TypeScript, PostgreSQL, MongoDB, Tailwind CSS.
+- **Clean Portrait Presentation** (`public/images/transparent-bg-main.png`):
+  - Pure, minimal presentation with static import (`import portraitImg from "@/public/images/transparent-bg-main.png"`) to automatically handle the cropped `1002 × 909` aspect ratio and bust browser cache.
+  - Centered in the 5-column right grid with responsive sizing (`max-w-sm sm:max-w-md`).
+  - Next.js `<Image>` with `priority` for optimal LCP.
+
+### F. Single Page Application Shell (`app/page.tsx`)
 - Structured single-page layout with anchor sections:
   - `#home`: Hero section with quick action buttons.
   - `#about`: Background & philosophy placeholder.
