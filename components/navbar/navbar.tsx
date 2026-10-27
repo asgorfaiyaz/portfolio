@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, FileText } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
+import { FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { NavLogo } from "./nav-logo";
 import { NavLinks, NAV_ITEMS } from "./nav-links";
 import { StatusBadge } from "./status-badge";
@@ -52,21 +52,20 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <StatusBadge />
 
-          <Link
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({
-              variant: "default",
-              size: "sm",
-              className:
-                "hidden sm:inline-flex items-center gap-1.5 font-medium shadow-none",
-            })}
+          <Button
+            type="button"
+            variant="default"
+            size="sm"
+            onClick={() =>
+              alert(
+                "My resume is currently being updated with recent Next.js 16 projects and will be available shortly! In the meantime, feel free to reach out via the contact section."
+              )
+            }
+            className="hidden sm:inline-flex items-center gap-1.5 font-medium shadow-none cursor-pointer"
           >
             <FileText className="size-3.5 opacity-80" />
             <span>Resume</span>
-            <ArrowUpRight className="size-3 opacity-60" />
-          </Link>
+          </Button>
 
           {/* Mobile Hamburger Drawer */}
           <MobileNav activeSection={activeSection} />

@@ -38,7 +38,7 @@ The portfolio follows an intentional, minimalist, dark-mode-first aesthetic tail
 4. **Typographic Hierarchy**:
    - `--foreground` (`oklch(0.985 0 0)`): Primary headings and body copy (high contrast).
    - `--muted-foreground` (`oklch(0.70 0.008 260)`): Secondary descriptions and captions.
-   - `--subtle-foreground` (`oklch(0.48 0.006 260)`): Metadata, timestamps, and section counters.
+   - `--subtle-foreground` (`oklch(0.62 0.007 260)`): Metadata, timestamps, and section counters (boosted for clear legibility).
 5. **Hairline Structural Borders**:
    - `--border`: `oklch(1 0 0 / 10%)`
    - `--border-subtle`: `oklch(1 0 0 / 6%)`
@@ -98,8 +98,8 @@ The portfolio follows an intentional, minimalist, dark-mode-first aesthetic tail
 - **`mobile-nav.tsx`**: Responsive drawer menu for screens `< md`:
   - Backdrop blur overlay.
   - Keyboard Escape trap & background body scroll locking.
-  - View Resume button (`/resume.pdf`, new tab) and Get in touch action.
-- **`navbar.tsx`**: Sticky top navigation container with backdrop blur, active section detection, and primary "Resume" CTA.
+  - View Resume button (temporary notification alert while resume is being refreshed) and Get in touch action.
+- **`navbar.tsx`**: Sticky top navigation container with backdrop blur, active section detection, and primary "Resume" CTA (triggers alert that resume is currently being updated).
 
 ### E. Banner / Hero Component (`components/banner/banner.tsx`)
 - High-impact two-column layout (`12-column grid` on desktop, stacked on mobile).
@@ -121,6 +121,7 @@ The portfolio follows an intentional, minimalist, dark-mode-first aesthetic tail
 - Bento highlight cards:
   - `AI-Assisted Engineering`: Accelerating shipping cycles with modern AI workflows.
   - `Open to Opportunities`: Actively seeking Full Stack or Frontend roles.
+  - `Movies, Series & Fluency`: How watching movies and TV series powers English fluency and natural cross-border communication.
 
 ### G. Skills & Architecture Section (`components/skills/skills.tsx`)
 - Section anchor: `#skills`.
@@ -148,13 +149,31 @@ The portfolio follows an intentional, minimalist, dark-mode-first aesthetic tail
   - `components/navbar/navbar.tsx`: Automatically activates the `"projects"` tab when on `/projects/*` routes, preventing false scroll-spy detections.
   - `nav-links.tsx`, `mobile-nav.tsx`, and `nav-logo.tsx`: Dynamically adjust link targets (`/#section` when off the home page, `#section` with smooth-scrolling when on the home page).
 
-### I. Single Page Application Shell (`app/page.tsx`)
+### I. Contact & Connect Section (`components/contact/`)
+- Section anchor: `#contact`.
+- Two-column responsive architecture:
+  - **Direct Channels & Status Card (Left Column)**:
+    - Quick email widget with one-click copy (`asgorfaiyaz@gmail.com`) providing visual `Copied!` tooltip feedback.
+    - Verified direct email client launcher button (`mailto:asgorfaiyaz@gmail.com`).
+    - Direct phone & WhatsApp card with one-click copy (`01889445355`), direct call trigger (`tel:+8801889445355`), and WhatsApp quick launch.
+  - **Terminal-Style Contact Form (Right Column)**:
+    - Styled with obsidian elevation (`border border-border bg-card/60 backdrop-blur-xs`) and mock window header `faiyaz.dev/send-message.ts`.
+    - Fields: Name, Email, Phone (optional), Inquiry Category selector, and multi-line Message textarea.
+    - Interactive dispatch feedback state with animated spinner and completion receipt with direct `mailto:` fallback.
+
+### J. Minimalist Obsidian Footer (`components/footer/`)
+- Brand chip monogram with active green availability pulse dot.
+- Quick anchor navigation (`#home`, `#about`, `#skills`, `#projects`, `#contact`).
+- Developer social profile shortcuts and smooth scroll-to-top button.
+- Dynamic copyright year and technical build metadata.
+
+### K. Single Page Application Shell (`app/page.tsx`)
 - Structured single-page layout with anchor sections:
-  - `#home`: Hero section with quick action buttons.
-  - `#about`: Background & philosophy placeholder.
-  - `#skills`: Tech stack matrix placeholder.
-  - `#projects`: Featured engineering work placeholder.
-  - `#contact`: Get in touch placeholder.
+  - `#home`: Hero banner with developer narrative and action CTAs.
+  - `#about`: Technical philosophy, background, and bento highlights.
+  - `#skills`: 4-domain systems architecture matrix.
+  - `#projects`: Featured engineering projects with interactive preview cards.
+  - `#contact`: Comprehensive contact widget, copyable email, and interactive inquiry form.
 
 ---
 
@@ -164,8 +183,12 @@ The portfolio follows an intentional, minimalist, dark-mode-first aesthetic tail
 - [x] **About Me Section**: Full stack narrative, bento highlights (`AI-Assisted Engineering`, `Open to Opportunities`).
 - [x] **Skills & Architecture Matrix**: 4-domain technical grid (Frontend, Backend, Databases, Auth & Tooling).
 - [x] **Featured Projects & Case Studies**:
-  - 6 full projects with architecture breakdowns (**Pulseboard**, **Kuro Commerce**, **SyncSpace**, **DevStack**, **FitLog**, **Productify**).
+  - Full projects with architecture breakdowns (**Pulseboard**, **Kuro Commerce**, **SyncSpace**, **DevStack**, **FitLog**, **Productify**).
   - Next.js 16 Suspense-wrapped dynamic detail routes (`/projects/[slug]`).
   - Route-aware universal navigation with automatic active tab handling and home-anchor routing.
-- [ ] **Contact Section**:
-  - Minimalist contact card / form, direct email copy button with feedback toast, and social link badges (GitHub, LinkedIn, Twitter/X, Email).
+- [x] **Contact Section & Footer**:
+  - Minimalist terminal contact form, direct email copy button with copied feedback, and social link badges (GitHub, LinkedIn, Twitter/X, Email).
+  - Clean obsidian footer with smooth back-to-top trigger.
+- [ ] **Optional Polish & Additions**:
+  - Optional custom resume PDF asset placed at `public/resume.pdf`.
+  - Analytics integration or email dispatch provider (e.g., Resend / Formspree) if remote webhook desired.

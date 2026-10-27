@@ -1,5 +1,7 @@
 import About from "@/components/about";
 import Banner from "@/components/banner/banner";
+import Contact from "@/components/contact";
+import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import Projects from "@/components/projects";
 import Skills from "@/components/skills";
@@ -24,26 +26,11 @@ export default function Home() {
         <Projects />
 
         {/* Contact Section (#contact) */}
-        <section
-          id="contact"
-          className="border-t border-border/60 bg-surface-raised/20 py-24"
-        >
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl space-y-4">
-              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground-subtle">
-                04 / Contact
-              </span>
-              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Let&apos;s build something together.
-              </h2>
-              <p className="text-foreground-muted leading-relaxed">
-                Open for opportunities, architectural consulting, and full stack
-                roles.
-              </p>
-            </div>
-          </div>
-        </section>
+        <Contact />
       </main>
+
+      {/* Obsidian Minimalist Footer */}
+      <Footer />
     </div>
   );
 }

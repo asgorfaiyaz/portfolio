@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects-data";
 import { FaGithub } from "react-icons/fa";
@@ -51,7 +52,7 @@ async function ProjectDetailContent({ params }: ProjectPageProps) {
   }
 
   return (
-    <main className="flex-1 pb-24 sm:pb-32">
+    <main className="flex-1 pb-12 sm:pb-16">
       <div className="mx-auto max-w-5xl px-4 pt-12 sm:px-6 lg:px-8">
         {/* Back Navigation Breadcrumb */}
         <div className="pb-8">
@@ -377,7 +378,7 @@ async function ProjectDetailContent({ params }: ProjectPageProps) {
 
 function ProjectDetailSkeleton() {
   return (
-    <main className="flex-1 pb-24 sm:pb-32 animate-pulse">
+    <main className="flex-1 pb-12 sm:pb-16 animate-pulse">
       <div className="mx-auto max-w-5xl px-4 pt-12 sm:px-6 lg:px-8 space-y-8">
         <div className="h-4 w-32 rounded bg-surface-raised" />
         <div className="space-y-4 pb-12 border-b border-border/60">
@@ -407,6 +408,9 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
       <Suspense fallback={<ProjectDetailSkeleton />}>
         <ProjectDetailContent params={params} />
       </Suspense>
+
+      {/* Obsidian Minimalist Footer */}
+      <Footer />
     </div>
   );
 }

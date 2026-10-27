@@ -1,4 +1,4 @@
-import { Rocket, Sparkles, Terminal } from "lucide-react";
+import { Film, Rocket, Sparkles, Terminal } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const HIGHLIGHT_CARDS = [
@@ -16,11 +16,18 @@ const HIGHLIGHT_CARDS = [
     description:
       "Actively seeking Full Stack or Frontend roles to build impactful products and learn alongside senior engineers.",
   },
+  {
+    icon: Film,
+    tag: "Beyond Code",
+    title: "Movies, Series & Fluency",
+    description:
+      "I love watching movies and TV series — they are literally helping me become fluent and expressive in English.",
+  },
 ];
 
 export function About() {
   return (
-    <section id="about" className="border-t border-border/60 py-24 sm:py-32">
+    <section id="about" className="border-t border-border/60 py-10 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Tag & Heading */}
         <div className="max-w-3xl space-y-4">
@@ -78,6 +85,22 @@ export function About() {
               applications significantly faster, all while continually refining
               my communication and teamwork skills.
             </p>
+
+            {/* Passion / English Fluency Highlight Block */}
+            <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur-xs">
+              <div className="flex items-center gap-2.5 text-xs font-mono font-semibold uppercase tracking-wider text-foreground">
+                <Film className="size-4 text-status-online" />
+                <span>Personal Passion &amp; Communication</span>
+              </div>
+              <p className="mt-2 text-sm text-foreground-muted leading-relaxed">
+                Outside of engineering,{" "}
+                <span className="font-semibold text-foreground">
+                  I love watching movies and TV series
+                </span>
+                —they are literally helping me become fluent and articulate in English,
+                enabling me to collaborate naturally with international and remote teams.
+              </p>
+            </div>
           </div>
 
           {/* Right Column: Bento Highlight Cards (5 cols) */}

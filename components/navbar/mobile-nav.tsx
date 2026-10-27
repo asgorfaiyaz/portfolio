@@ -137,21 +137,21 @@ export function MobileNav({ activeSection }: MobileNavProps) {
 
         {/* Mobile Action CTAs */}
         <div className="mt-6 flex flex-col gap-2 pt-4 border-t border-border-subtle">
-          <Link
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsOpen(false)}
-            className={buttonVariants({
-              variant: "default",
-              size: "default",
-              className: "w-full justify-center gap-2 font-medium",
-            })}
+          <Button
+            type="button"
+            variant="default"
+            size="default"
+            onClick={() => {
+              setIsOpen(false);
+              alert(
+                "My resume is currently being updated with recent Next.js 16 projects and will be available shortly! In the meantime, feel free to reach out via the contact section."
+              );
+            }}
+            className="w-full justify-center gap-2 font-medium cursor-pointer"
           >
             <FileText className="size-4" />
             <span>View Resume</span>
-            <ArrowUpRight className="size-4 opacity-70" />
-          </Link>
+          </Button>
 
           <Link
             href={isHomePage ? "#contact" : "/#contact"}

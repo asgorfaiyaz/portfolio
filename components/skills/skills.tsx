@@ -102,7 +102,7 @@ const CORE_STACK_PILLARS = [
 
 export function Skills() {
   return (
-    <section id="skills" className="border-t border-border/60 py-24 sm:py-32">
+    <section id="skills" className="border-t border-border/60 py-10 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
@@ -119,7 +119,8 @@ export function Skills() {
           </h2>
 
           <p className="text-lg text-foreground-muted leading-relaxed">
-            A breakdown of my technical stack across the full application lifecycle—focused on type safety, speed, and maintainable structure.
+            A breakdown of my technical stack across the full application
+            lifecycle—focused on type safety, speed, and maintainable structure.
           </p>
         </div>
 

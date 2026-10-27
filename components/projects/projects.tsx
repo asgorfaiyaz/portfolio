@@ -10,7 +10,7 @@ export function Projects() {
   const projects = getAllProjects();
 
   return (
-    <section id="projects" className="border-t border-border/60 py-24 sm:py-32">
+    <section id="projects" className="border-t border-border/60 py-10 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-12 border-b border-border/60">
@@ -22,16 +22,6 @@ export function Projects() {
               <Terminal className="size-3.5 text-foreground-subtle" />
               <span>03 / Featured Projects</span>
             </Badge>
-
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl sm:leading-[1.15]">
-              Real-world systems, built for production.
-            </h2>
-
-            <p className="text-lg text-foreground-muted leading-relaxed">
-              Selected engineering projects highlighting end-to-end
-              architecture, from relational database design to reactive user
-              interfaces.
-            </p>
           </div>
 
           <div className="shrink-0">
