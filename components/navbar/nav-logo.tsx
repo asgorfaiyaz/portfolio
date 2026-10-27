@@ -1,12 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Terminal } from "lucide-react";
 
 export function NavLogo() {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isHomePage) {
+      const homeEl = document.getElementById("home");
+      if (homeEl) {
+        e.preventDefault();
+        homeEl.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", "#home");
+      }
+    }
+  };
+
   return (
     <Link
-      href="#home"
+      href={isHomePage ? "#home" : "/"}
+      onClick={handleClick}
       aria-label="Faiyaz - Full Stack Developer"
       className="group flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md transition-all"
     >

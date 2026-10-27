@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight, FileText } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { NavLogo } from "./nav-logo";
@@ -14,7 +15,17 @@ import { cn } from "@/lib/utils";
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
 
 export function Navbar() {
-  const activeSection = useScrollSpy(SECTION_IDS, 120);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  const scrollSpySection = useScrollSpy(isHomePage ? SECTION_IDS : [], 120);
+
+  // When viewing project detail pages or projects subroutes, activate "projects" tab
+  const activeSection = pathname.startsWith("/projects")
+    ? "projects"
+    : isHomePage
+    ? scrollSpySection
+    : "";
+
   const isScrolled = useIsScrolled(20);
 
   return (

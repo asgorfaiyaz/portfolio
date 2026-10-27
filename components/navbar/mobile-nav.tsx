@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, Terminal, FileText } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { NAV_ITEMS, type NavItem } from "./nav-links";
@@ -13,6 +14,8 @@ interface MobileNavProps {
 
 export function MobileNav({ activeSection }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   // Close menu on ESC key and prevent background scroll
   useEffect(() => {
@@ -36,11 +39,25 @@ export function MobileNav({ activeSection }: MobileNavProps) {
     item: NavItem
   ) => {
     setIsOpen(false);
-    const targetElement = document.getElementById(item.id);
-    if (targetElement) {
-      e.preventDefault();
-      targetElement.scrollIntoView({ behavior: "smooth" });
-      window.history.pushState(null, "", item.href);
+    if (isHomePage) {
+      const targetElement = document.getElementById(item.id);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${item.id}`);
+      }
+    }
+  };
+
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setIsOpen(false);
+    if (isHomePage) {
+      const contactEl = document.getElementById("contact");
+      if (contactEl) {
+        e.preventDefault();
+        contactEl.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", "#contact");
+      }
     }
   };
 
@@ -94,10 +111,12 @@ export function MobileNav({ activeSection }: MobileNavProps) {
         <nav className="flex flex-col gap-1.5" aria-label="Mobile Navigation">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id;
+            const href = isHomePage ? `#${item.id}` : `/#${item.id}`;
+
             return (
               <Link
                 key={item.id}
-                href={item.href}
+                href={href}
                 onClick={(e) => handleLinkClick(e, item)}
                 className={cn(
                   "flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium transition-colors",
@@ -135,8 +154,8 @@ export function MobileNav({ activeSection }: MobileNavProps) {
           </Link>
 
           <Link
-            href="#contact"
-            onClick={() => setIsOpen(false)}
+            href={isHomePage ? "#contact" : "/#contact"}
+            onClick={handleContactClick}
             className={buttonVariants({
               variant: "outline",
               size: "default",

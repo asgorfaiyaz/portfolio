@@ -1,6 +1,7 @@
 import About from "@/components/about";
 import Banner from "@/components/banner/banner";
 import { Navbar } from "@/components/navbar";
+import Projects from "@/components/projects";
 import Skills from "@/components/skills";
 
 export default function Home() {
@@ -20,22 +21,7 @@ export default function Home() {
         <Skills />
 
         {/* Projects Section (#projects) */}
-        <section id="projects" className="border-t border-border/60 py-24">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl space-y-4">
-              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground-subtle">
-                03 / Projects
-              </span>
-              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Selected engineering work.
-              </h2>
-              <p className="text-foreground-muted leading-relaxed">
-                Production-grade applications, open source libraries, and
-                systems architecture.
-              </p>
-            </div>
-          </div>
-        </section>
+        <Projects />
 
         {/* Contact Section (#contact) */}
         <section

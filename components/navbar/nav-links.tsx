@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 export interface NavItem {
@@ -30,15 +31,20 @@ export function NavLinks({
   className,
   itemClassName,
 }: NavLinksProps) {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     item: NavItem
   ) => {
-    const targetElement = document.getElementById(item.id);
-    if (targetElement) {
-      e.preventDefault();
-      targetElement.scrollIntoView({ behavior: "smooth" });
-      window.history.pushState(null, "", item.href);
+    if (isHomePage) {
+      const targetElement = document.getElementById(item.id);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${item.id}`);
+      }
     }
     onItemClick?.(item.id);
   };
@@ -50,10 +56,12 @@ export function NavLinks({
     >
       {NAV_ITEMS.map((item) => {
         const isActive = activeSection === item.id;
+        const href = isHomePage ? `#${item.id}` : `/#${item.id}`;
+
         return (
           <Link
             key={item.id}
-            href={item.href}
+            href={href}
             onClick={(e) => handleClick(e, item)}
             className={cn(
               "relative px-3 py-1.5 text-sm font-medium transition-all duration-200 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring",

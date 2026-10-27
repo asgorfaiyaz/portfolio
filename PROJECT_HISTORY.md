@@ -134,7 +134,21 @@ The portfolio follows an intentional, minimalist, dark-mode-first aesthetic tail
   - End-to-end type safety (Drizzle schema to React components).
   - Production integrations (Stripe, Better Auth, Clerk, TanStack caching).
 
-### H. Single Page Application Shell (`app/page.tsx`)
+### H. Featured Projects & Case Studies (`components/projects/`, `app/projects/`)
+- **`lib/projects-data.ts`**:
+  - Full typed project data models (`Project` interface) supporting architecture layer breakdowns (Frontend, Backend, Database, Auth/Security), delivered features, tags, and engineering challenges & solutions.
+  - Included projects: **Pulseboard** (Developer Analytics SaaS), **Kuro Commerce** (Headless E-Commerce), **SyncSpace** (Kanban Workspace), **DevStack** (Tech Stack Builder), **FitLog** (Workout Companion), and **Productify** (Full-Stack E-Commerce & Product Management).
+- **`components/projects/`**:
+  - `projects.tsx`: Responsive grid header with terminal index, direct GitHub link, and modular project card map.
+  - `project-card.tsx`: Dark terminal mockup preview with uploaded interface screenshots (`devstack.png`, `fitlog.png`, `productify.png`), hover scale zoom with floating "View Case Study" glass badge, stack tags, live status indicator, and direct deep-dive action links.
+- **`app/projects/[slug]/page.tsx`**:
+  - Deep-dive dynamic case study page with `generateStaticParams()`, `generateMetadata()`, and full-width browser mockup screenshot display.
+  - Next.js 16 Suspense boundary wrapping `<ProjectDetailContent params={params} />` with skeleton fallback, eliminating "URL data outside of Suspense" navigation warnings.
+- **Route-Aware Navigation System**:
+  - `components/navbar/navbar.tsx`: Automatically activates the `"projects"` tab when on `/projects/*` routes, preventing false scroll-spy detections.
+  - `nav-links.tsx`, `mobile-nav.tsx`, and `nav-logo.tsx`: Dynamically adjust link targets (`/#section` when off the home page, `#section` with smooth-scrolling when on the home page).
+
+### I. Single Page Application Shell (`app/page.tsx`)
 - Structured single-page layout with anchor sections:
   - `#home`: Hero section with quick action buttons.
   - `#about`: Background & philosophy placeholder.
@@ -144,16 +158,14 @@ The portfolio follows an intentional, minimalist, dark-mode-first aesthetic tail
 
 ---
 
-## 5. Upcoming Feature Roadmap
+## 5. Completed vs. Upcoming Feature Roadmap
 
-1. **Hero Section Enhancement**:
-   - Refined copy, terminal command snippet or quick interactive bio, social link badges (GitHub, LinkedIn, Email).
-2. **About Me Section**:
-   - Technical background, systems engineering focus, approach to building full-stack products.
-3. **Skills & Architecture Matrix**:
-   - Categorized stack (Backend, Frontend, Databases, DevOps/Cloud, Tooling).
-   - Clean badges or cards without visual clutter.
-4. **Featured Projects**:
-   - Architecture highlights, tech tags, GitHub/Live demo links, clean previews.
-5. **Contact Section**:
-   - Minimalist contact card / form, direct email copy button with feedback toast.
+- [x] **Hero Section**: High-impact two-column layout, developer copy, direct portrait presentation, action buttons.
+- [x] **About Me Section**: Full stack narrative, bento highlights (`AI-Assisted Engineering`, `Open to Opportunities`).
+- [x] **Skills & Architecture Matrix**: 4-domain technical grid (Frontend, Backend, Databases, Auth & Tooling).
+- [x] **Featured Projects & Case Studies**:
+  - 6 full projects with architecture breakdowns (**Pulseboard**, **Kuro Commerce**, **SyncSpace**, **DevStack**, **FitLog**, **Productify**).
+  - Next.js 16 Suspense-wrapped dynamic detail routes (`/projects/[slug]`).
+  - Route-aware universal navigation with automatic active tab handling and home-anchor routing.
+- [ ] **Contact Section**:
+  - Minimalist contact card / form, direct email copy button with feedback toast, and social link badges (GitHub, LinkedIn, Twitter/X, Email).
